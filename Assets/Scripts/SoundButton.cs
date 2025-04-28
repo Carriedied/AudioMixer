@@ -14,9 +14,14 @@ public class SoundButton : MonoBehaviour
         _musicButton = GetComponent<Button>();
     }
 
-    private void Start()
+    private void OnEnable()
     {
         _musicButton.onClick.AddListener(OnButtonClick);
+    }
+
+    private void OnDisable()
+    {
+        _musicButton.onClick.RemoveListener(OnButtonClick);
     }
 
     private void OnButtonClick()

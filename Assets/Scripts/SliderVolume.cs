@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Audio;
 using UnityEngine.UI;
@@ -5,8 +6,7 @@ using UnityEngine.UI;
 [RequireComponent(typeof(Slider))]
 public class SliderVolume : MonoBehaviour
 {
-    [SerializeField] private string _mixerGroupName;
-    [SerializeField] private AudioMixer _audioMixer;
+    [SerializeField] private AudioMixerGroup _audioMixerGroup;
     [SerializeField] private AudioPlayback _toggleSound;
 
     private Slider _changingVolumeSlider;
@@ -16,11 +16,19 @@ public class SliderVolume : MonoBehaviour
         _changingVolumeSlider = GetComponent<Slider>();
     }
 
-    private void Start()
+    private void OnEnable()
     {
         _changingVolumeSlider.onValueChanged.AddListener(SetVolume);
+    }
 
-        float savedVolume = PlayerPrefs.GetFloat(_mixerGroupName, 0f);
+    private void OnDisable()
+    {
+        _changingVolumeSlider.onValueChanged.RemoveListener(SetVolume);
+    }
+
+    private void Start()
+    {
+        float savedVolume = PlayerPrefs.GetFloat(_audioMixerGroup.name, 0f);
 
         _changingVolumeSlider.value = savedVolume;
     }
@@ -29,9 +37,9 @@ public class SliderVolume : MonoBehaviour
     {
         if (!_toggleSound.SoundsEnabled)
         {
-            _audioMixer.SetFloat(_mixerGroupName, Mathf.Log10(value) * 20);
+            _audioMixerGroup.audioMixer.SetFloat(_audioMixerGroup.name, Mathf.Log10(value) * 20);
         }
 
-        PlayerPrefs.SetFloat(_mixerGroupName, value);
+        PlayerPrefs.SetFloat(_audioMixerGroup.name, value);
     }
 }

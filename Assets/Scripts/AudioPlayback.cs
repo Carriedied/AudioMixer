@@ -6,7 +6,7 @@ using UnityEngine.UI;
 [RequireComponent(typeof(Button))]
 public class AudioPlayback : MonoBehaviour
 {
-    private const string MasterAudioMixerName = "MasterVolume";
+    private const string MasterAudioMixerName = "Master";
 
     [SerializeField] private AudioMixer _audioMixer;
 
@@ -22,11 +22,19 @@ public class AudioPlayback : MonoBehaviour
         _toggleButton = GetComponent<Button>();
     }
 
+    private void OnEnable()
+    {
+        _toggleButton.onClick.AddListener(OnButtonClick);
+    }
+
+    private void OnDisable()
+    {
+        _toggleButton.onClick.RemoveListener(OnButtonClick);
+    }
+
     private void Start()
     {
         SoundsEnabled = false; 
-
-        _toggleButton.onClick.AddListener(OnButtonClick);
     }
 
     private void OnButtonClick()

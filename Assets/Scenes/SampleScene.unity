@@ -2146,8 +2146,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 24e02195996be8743937441a2498b218, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _mixerGroupName: MasterVolume
-  _audioMixer: {fileID: 24100000, guid: def102451e0d9f248978a996f8edede2, type: 2}
+  _audioMixerGroup: {fileID: 24300002, guid: def102451e0d9f248978a996f8edede2, type: 2}
   _toggleSound: {fileID: 110249416}
 --- !u!1 &1407504580
 GameObject:
@@ -2252,8 +2251,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 24e02195996be8743937441a2498b218, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _mixerGroupName: ButtonsVolume
-  _audioMixer: {fileID: 24100000, guid: def102451e0d9f248978a996f8edede2, type: 2}
+  _audioMixerGroup: {fileID: 6697590916353868445, guid: def102451e0d9f248978a996f8edede2, type: 2}
   _toggleSound: {fileID: 110249416}
 --- !u!1 &1443132376
 GameObject:
@@ -2433,8 +2431,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 24e02195996be8743937441a2498b218, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _mixerGroupName: MusicVolume
-  _audioMixer: {fileID: 24100000, guid: def102451e0d9f248978a996f8edede2, type: 2}
+  _audioMixerGroup: {fileID: -1230756924894163845, guid: def102451e0d9f248978a996f8edede2, type: 2}
   _toggleSound: {fileID: 110249416}
 --- !u!1 &1460126115
 GameObject:
